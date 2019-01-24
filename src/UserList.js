@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { array } from 'prop-types';
-import { User } from './User.js';
+import User from './User.js';
 
 class UserList extends Component {
   state = {
@@ -12,18 +12,20 @@ class UserList extends Component {
   }
 
   render() {
-    	const users = this.props
-    	const hideScore = this.state
-    	
+    	const { users } = this.props
+    	const { hideScore } = this.state
+    
     	return(
         	<div>
           		<h1> Users: </h1>
-    			{ users.length === 0 &&
-    				<button onClick={this.changeScore}> {  hideScore ? "Hide" : "Show"}</button> 
+    			{ users.length > 0 &&
+          		<div>
+    				<button onClick={this.changeScore}> {  hideScore ? "Show Game Score" : "Hide Game Score"}</button> 
+				</div>
 				}
 				<ol>
           			{ users.map( user => (
-                 		<User user={user} onHandleScore={hideScore}/>
+                 		<User user={user} showGame={hideScore}/>
                  	))}
 				</ol>
           	</div>
