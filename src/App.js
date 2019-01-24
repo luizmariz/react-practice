@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import CreateNewUser from './CreateNewUser.js';
 import './App.css';
 
 /*
@@ -11,13 +12,31 @@ The instructions for this project are located in the `instructions.md` file.
 */
 
 class App extends Component {
+  state = {
+    users: [],
+  }
+
+  handleAddUser = obj => {
+  	this.setState(prev => ({ users: [...prev.users, obj] }));
+    console.log(this.state.users);
+  }
+
   render() {
+    const { users } = this.state;
+    
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
+		<div>
+			<CreateNewUser 
+    			users={users}
+    			onAddUser={this.handleAddUser}
+			/>
+    		
+		</div>
       </div>
     );
   }
