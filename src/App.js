@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import CreateNewUser from './CreateNewUser.js';
+import UserList from './UserList.js';
 import './App.css';
 
 /*
@@ -18,8 +19,9 @@ class App extends Component {
 
   handleAddUser = obj => {
   	this.setState(prev => ({ users: [...prev.users, obj] }));
-    console.log(this.state.users);
   }
+
+  handleAddUserGame = username => {}
 
   render() {
     const { users } = this.state;
@@ -35,7 +37,7 @@ class App extends Component {
     			users={users}
     			onAddUser={this.handleAddUser}
 			/>
-    		
+    		<UserList users={users}/>
 		</div>
       </div>
     );
