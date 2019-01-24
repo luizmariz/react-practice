@@ -17,7 +17,7 @@ class UserList extends Component {
     	
     	return(
         	<div>
-          		<h1> Users: <h1>
+          		<h1> Users: </h1>
     			{ users.length === 0 &&
     				<button onClick={this.changeScore}> {  hideScore ? "Hide" : "Show"}</button> 
 				}
